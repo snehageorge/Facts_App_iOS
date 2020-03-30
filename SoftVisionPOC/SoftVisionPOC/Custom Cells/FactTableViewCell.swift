@@ -1,5 +1,5 @@
 //
-//  CountryInfoTableViewCell.swift
+//  FactTableViewCell.swift
 //  SoftVisionPOC
 //
 //  Created by Sneha G on 30/03/20.
@@ -8,13 +8,18 @@
 
 import UIKit
 
-class CountryInfoTableViewCell: UITableViewCell {
+class FactTableViewCell: UITableViewCell {
 
-    static let cellId = "CellIdentifier"
+    var item:FactDetailResponseModel? {
+        didSet {
+            iconImageView.image = nil
+            titleLabel.text = item?.title
+            descriptionLabel.text = item?.description
+        }
+    }
 
     private let iconImageView:UIImageView = {
         let imgView = UIImageView()
-        imgView.backgroundColor = .green
         imgView.contentMode = .scaleAspectFit
         imgView.clipsToBounds = true
         return imgView
@@ -37,7 +42,7 @@ class CountryInfoTableViewCell: UITableViewCell {
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .default, reuseIdentifier: CountryInfoTableViewCell.cellId)
+        super.init(style: .default, reuseIdentifier: CellIdentifier.Fact)
         addSubview(iconImageView)
         addSubview(titleLabel)
         addSubview(descriptionLabel)
@@ -57,8 +62,6 @@ class CountryInfoTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

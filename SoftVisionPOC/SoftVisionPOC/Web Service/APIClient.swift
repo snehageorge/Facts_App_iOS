@@ -8,22 +8,35 @@
 
 import UIKit
 
+enum DataError: Error {
+    case invalidData
+    case decodingError
+    case serverError
+}
+
+typealias result<T> = (Result<T, Error>) -> Void
+
 final class APIClient: NSObject {
 
     static let sharedInstance = APIClient()
 
-    func callRequest() {
-
+    func callRequest<T: Decodable>(request clientRequest:BaseRequestModel, of type: T.Type, completion: @escaping result<T>) {
         let sessionConfiguration = URLSessionConfiguration.default
         sessionConfiguration.timeoutIntervalForRequest = 20.0
         let session = URLSession(configuration: sessionConfiguration)
-        let task = session.dataTask(with:URL(string: Base.url)! , completionHandler: { data, response, error in
+        var request = URLRequest(url: clientRequest.requestUrl())
+        request.httpMethod = clientRequest.requestMethod()
+        let task = session.dataTask(with: request, completionHandler: { data, response, error in
             if error != nil {
-                print(error?.localizedDescription ?? "Error")
+                DispatchQueue.main.async {
+                    completion(.failure(error!))
+                }
             }
             guard let httpResponse = response as? HTTPURLResponse,
                 (200...299).contains(httpResponse.statusCode) else {
-                    print(error?.localizedDescription ?? "Error")
+                    DispatchQueue.main.async {
+                        completion(.failure(DataError.serverError))
+                    }
                     return
             }
 
@@ -35,16 +48,21 @@ final class APIClient: NSObject {
                 print(jsonString)
                 let objectData = jsonString.data(using: String.Encoding.utf8)
                 do {
-                    //let decodedData: T = try JSONDecoder().decode(T.self, from: objectData!)
-                    let respDict = try JSONSerialization.jsonObject(with: objectData!, options: []) as? [String: Any]
-                    print("Success")
+                    let decodedData: T = try JSONDecoder().decode(T.self, from: objectData!)
+                    DispatchQueue.main.async {
+                        completion(.success(decodedData))
+                    }
                 } catch {
                     // Handle error
                     print(error)
-                    print("decoding error")
+                    DispatchQueue.main.async {
+                        completion(.failure(DataError.decodingError))
+                    }
                 }
             }else {
-                print("Invalid data")
+                DispatchQueue.main.async {
+                    completion(.failure(DataError.invalidData))
+                }
             }
         })
         task.resume()
