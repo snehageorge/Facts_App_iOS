@@ -13,5 +13,10 @@ enum Base {
 }
 
 enum Constant {
+    static let appDelegate = UIApplication.shared.delegate as! AppDelegate
     static let characterSet = "iso-8859-1"
+}
+
+enum CellIdentifier {
+    static let Fact = "Fact"
 }

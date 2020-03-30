@@ -10,8 +10,17 @@ import UIKit
 
 class APIManager: NSObject {
 
-    class func countryInfoAPI() {
-        APIClient.sharedInstance.callRequest()
-    }
+    class func factAPI(successBlock:((_ resp:FactViewModel) -> Void)?, failureBlock: ((_ errMsg:String) -> Void)?) {
+        APIClient.sharedInstance.callRequest(request: FactRequestModel(), of: FactResponseModel.self) { (result) in
+            switch result {
 
+            case .failure(let error):
+                failureBlock?(error.localizedDescription)
+
+            case .success(let facts):
+                let itemViewModel = FactViewModel(factList: facts)
+                successBlock?(itemViewModel)
+            }
+        }
+    }
 }
