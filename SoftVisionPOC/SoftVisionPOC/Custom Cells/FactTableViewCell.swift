@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class FactTableViewCell: UITableViewCell {
 
@@ -15,6 +16,17 @@ class FactTableViewCell: UITableViewCell {
             iconImageView.image = nil
             titleLabel.text = item?.title
             descriptionLabel.text = item?.description
+            if let imageUrl = item?.imageHref {
+                let url = URL(string: imageUrl)
+                iconImageView.kf.setImage(with: url, placeholder: nil, options: nil, progressBlock: nil, completionHandler: { [weak self] (image, err, cache, url) in
+                    guard let self = self else { return }
+                    if image == nil {
+                        self.iconImageView.image = #imageLiteral(resourceName: "ImgNotFound")
+                    }
+                })
+            }else {
+                iconImageView.image = #imageLiteral(resourceName: "ImgNotFound")
+            }
         }
     }
 
