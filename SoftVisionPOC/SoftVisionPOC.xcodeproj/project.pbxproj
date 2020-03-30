@@ -15,6 +15,8 @@
 		FA6297B52431CAA1009E8883 /* SoftVisionPOCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6297B42431CAA1009E8883 /* SoftVisionPOCTests.swift */; };
 		FA6297C02431CAA1009E8883 /* SoftVisionPOCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6297BF2431CAA1009E8883 /* SoftVisionPOCUITests.swift */; };
 		FA6297CF2431E930009E8883 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6297CE2431E930009E8883 /* BaseViewController.swift */; };
+		FA6297D124320B71009E8883 /* CountryInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6297D024320B71009E8883 /* CountryInfoTableViewCell.swift */; };
+		FA6297D424320C3B009E8883 /* UIView+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6297D324320C3B009E8883 /* UIView+Addition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		FA6297BF2431CAA1009E8883 /* SoftVisionPOCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftVisionPOCUITests.swift; sourceTree = "<group>"; };
 		FA6297C12431CAA1009E8883 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA6297CE2431E930009E8883 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		FA6297D024320B71009E8883 /* CountryInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryInfoTableViewCell.swift; sourceTree = "<group>"; };
+		FA6297D324320C3B009E8883 /* UIView+Addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Addition.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +105,12 @@
 			children = (
 				FA62979D2431CA97009E8883 /* AppDelegate.swift */,
 				FA62979F2431CA97009E8883 /* SceneDelegate.swift */,
+				FA6297D224320B7B009E8883 /* Custom Cells */,
 				FA6297CD2431E90A009E8883 /* ViewControllers */,
 				FA6297A62431CAA0009E8883 /* Assets.xcassets */,
 				FA6297A82431CAA0009E8883 /* LaunchScreen.storyboard */,
 				FA6297AB2431CAA0009E8883 /* Info.plist */,
+				FA6297D324320C3B009E8883 /* UIView+Addition.swift */,
 			);
 			path = SoftVisionPOC;
 			sourceTree = "<group>";
@@ -134,6 +140,14 @@
 				FA6297CE2431E930009E8883 /* BaseViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FA6297D224320B7B009E8883 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FA6297D024320B71009E8883 /* CountryInfoTableViewCell.swift */,
+			);
+			path = "Custom Cells";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +281,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA6297A22431CA97009E8883 /* CountryInfoViewController.swift in Sources */,
+				FA6297D124320B71009E8883 /* CountryInfoTableViewCell.swift in Sources */,
+				FA6297D424320C3B009E8883 /* UIView+Addition.swift in Sources */,
 				FA6297CF2431E930009E8883 /* BaseViewController.swift in Sources */,
 				FA62979E2431CA97009E8883 /* AppDelegate.swift in Sources */,
 				FA6297A02431CA97009E8883 /* SceneDelegate.swift in Sources */,
