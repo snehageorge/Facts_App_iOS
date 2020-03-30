@@ -9,13 +9,13 @@
 import UIKit
 
 class CountryInfoViewController: BaseViewController {
-
+    
     var tableView:UITableView?
-
+    
     override func loadView() {
         self.view = UIView()
         view.backgroundColor = .white
-
+        
         tableView = UITableView()
         view.addSubview(tableView!)
         tableView?.translatesAutoresizingMaskIntoConstraints =  false
@@ -27,14 +27,15 @@ class CountryInfoViewController: BaseViewController {
         tableView?.accessibilityIdentifier = "tableView"
         // align tableView from the left and right
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": tableView!]));
-
+        
         // align tableView from the top and bottom
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": tableView!]));
-
+        
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        APIManager.countryInfoAPI()
     }
 }
 
@@ -42,7 +43,7 @@ extension CountryInfoViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CountryInfoTableViewCell.cellId, for: indexPath) as! CountryInfoTableViewCell
         return cell
