@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CountryInfoViewController.swift
 //  SoftVisionPOC
 //
 //  Created by Sneha G on 30/03/20.
@@ -8,13 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CountryInfoViewController: BaseViewController {
+
+    override func loadView() {
+        self.view = UIView()
+        view.backgroundColor = .white
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-
-
 }
 
