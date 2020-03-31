@@ -30,6 +30,7 @@
 		FA6297CF2431E930009E8883 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6297CE2431E930009E8883 /* BaseViewController.swift */; };
 		FA6297D124320B71009E8883 /* FactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6297D024320B71009E8883 /* FactTableViewCell.swift */; };
 		FA6297D424320C3B009E8883 /* UIView+Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6297D324320C3B009E8883 /* UIView+Addition.swift */; };
+		FA64ED4A2432E3750093CF26 /* factResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = FA64ED492432E3750093CF26 /* factResponse.json */; };
 		FC6E352DB1AE977EDCBB2716 /* libPods-SoftVisionPOC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 149A35C3FDB41827C5C22BF6 /* libPods-SoftVisionPOC.a */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,7 @@
 		FA6297CE2431E930009E8883 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		FA6297D024320B71009E8883 /* FactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactTableViewCell.swift; sourceTree = "<group>"; };
 		FA6297D324320C3B009E8883 /* UIView+Addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Addition.swift"; sourceTree = "<group>"; };
+		FA64ED492432E3750093CF26 /* factResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = factResponse.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +225,7 @@
 		FA6297B32431CAA1009E8883 /* SoftVisionPOCTests */ = {
 			isa = PBXGroup;
 			children = (
+				FA64ED492432E3750093CF26 /* factResponse.json */,
 				FA6297B42431CAA1009E8883 /* SoftVisionPOCTests.swift */,
 				FA6297B62431CAA1009E8883 /* Info.plist */,
 			);
@@ -372,6 +375,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA64ED4A2432E3750093CF26 /* factResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
