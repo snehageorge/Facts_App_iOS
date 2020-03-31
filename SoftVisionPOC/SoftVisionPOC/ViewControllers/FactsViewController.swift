@@ -54,15 +54,21 @@ class FactsViewController: BaseViewController {
     }
 
     @objc func itemListAPICall() {
+        showActivityIndicator()
         APIManager.factAPI(successBlock: { [weak self] (listViewModel) in
             guard let self = self else { return }
-            self.refreshControl.endRefreshing()
             self.itemViewModel = listViewModel
+            self.stopUINetworkActivites()
             },failureBlock:{ [weak self] (errMsg) in
                 guard let self = self else { return }
-                self.refreshControl.endRefreshing()
+                self.stopUINetworkActivites()
                 self.showAlert(mesage: errMsg)
         })
+    }
+
+    func stopUINetworkActivites() {
+        self.refreshControl.endRefreshing()
+        hideActivityIndicator()
     }
 }
 
