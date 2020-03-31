@@ -10,26 +10,28 @@ import XCTest
 @testable import SoftVisionPOC
 
 class SoftVisionPOCTests: XCTestCase {
-  var countryInfoViewController: FactsViewController?
+  var factsViewController: FactsViewController?
 
   override func setUpWithError() throws {
-    countryInfoViewController = FactsViewController()
-    countryInfoViewController?.loadViewIfNeeded()
+    factsViewController = FactsViewController()
+    factsViewController?.loadViewIfNeeded()
   }
 
   override func tearDownWithError() throws {
-    countryInfoViewController = nil
+    factsViewController = nil
   }
 
-  func testCountryInfoViewControllerUI() {
-    XCTAssertNotNil(countryInfoViewController?.factTableView, "Tableview is missing")
-    let refreshControl = countryInfoViewController?.refreshControl
+  /// Test the main UI components in the FactsViewController
+  func testFactsViewControllerUI() {
+    XCTAssertNotNil(factsViewController?.factTableView, "Tableview is missing")
+    let refreshControl = factsViewController?.refreshControl
     XCTAssertNotNil(refreshControl, "Refresh control is missing")
-    let action = refreshControl?.actions(forTarget: countryInfoViewController, forControlEvent: .valueChanged)
+    let action = refreshControl?.actions(forTarget: factsViewController, forControlEvent: .valueChanged)
     XCTAssertNotNil(action, "Pull to refresh is not attached to value changed event.")
   }
 
-  func testCountryInfoAPIMockResponse() {
+  /// Mock the response and test the model and viewmodel classes and methods
+  func testFactsAPIMockResponse() {
     let testBundle = Bundle(for: type(of: self))
     let path = testBundle.path(forResource: "factResponse", ofType: "json")
     let data = try? Data(contentsOf: URL(fileURLWithPath: path!), options: .alwaysMapped)
@@ -44,7 +46,7 @@ class SoftVisionPOCTests: XCTestCase {
     }
   }
 
-  func testCountryInfoAPICall() {
+  func testFactsAPICall() {
     let promise = expectation(description: "Status code between 200 and 299")
     APIManager.factAPI(successBlock: { (_) in
       promise.fulfill()

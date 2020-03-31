@@ -23,7 +23,7 @@ class FactTableViewCell: UITableViewCell {
                                   options: nil,
                                   progressBlock: nil,
                                   completionHandler: { [weak self] (image, _, _, _) in
-                                    
+
                                     guard let self = self else { return }
                                     if image == nil {
                                       self.iconImageView.image = #imageLiteral(resourceName: "ImgNotFound")

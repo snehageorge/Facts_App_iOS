@@ -11,9 +11,7 @@ import SVProgressHUD
 
 extension UIViewController {
 
-  func showAlert(mesage: String,
-                 title: String? = "",
-                 action:(() -> Void)? = nil) {
+  func showAlert(mesage: String, title: String? = "", action:(() -> Void)? = nil) {
     UIAlertController.showAlert(mesage: mesage, title: title, view: self, action: action)
   }
 
