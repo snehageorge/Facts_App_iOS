@@ -33,11 +33,18 @@ class FactsViewController: BaseViewController {
     factTableView?.dataSource = self
     factTableView?.isAccessibilityElement = true
     factTableView?.accessibilityIdentifier = "tableView"
+    factTableView?.separatorColor = .clear
     // align tableView from the left and right
-    view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": factTableView!]))
+    view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|",
+                                                       options: NSLayoutConstraint.FormatOptions(rawValue: 0),
+                                                       metrics: nil,
+                                                       views: ["view": factTableView!]))
 
     // align tableView from the top and bottom
-    view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": factTableView!]))
+    view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|",
+                                                       options: NSLayoutConstraint.FormatOptions(rawValue: 0),
+                                                       metrics: nil,
+                                                       views: ["view": factTableView!]))
   }
 
   override func viewDidLoad() {

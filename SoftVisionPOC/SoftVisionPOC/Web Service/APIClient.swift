@@ -49,6 +49,7 @@ final class APIClient: NSObject {
       let charSetStringEncoded = CFStringConvertEncodingToNSStringEncoding(charSetEncoded)
 
       if  let jsonString = String(data: data!, encoding: String.Encoding(rawValue: charSetStringEncoded)) {
+        print(jsonString)
         let objectData = jsonString.data(using: String.Encoding.utf8)
         do {
           let decodedData: T = try JSONDecoder().decode(T.self, from: objectData!)
