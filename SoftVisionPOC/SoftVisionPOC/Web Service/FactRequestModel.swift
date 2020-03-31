@@ -9,13 +9,13 @@
 import UIKit
 
 class FactRequestModel: BaseRequestModel {
-    
-    override func requestUrl() -> URL {
-        if let url = URL(string: Base.url) {
-            return url
-        }else {
-           fatalError("Invalid Url")
-        }
+
+  override func requestUrl() -> URL {
+    if let url = URL(string: Base.url) {
+      return url
+    } else {
+      fatalError("Invalid Url")
     }
+  }
 
 }

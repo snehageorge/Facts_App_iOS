@@ -9,16 +9,19 @@
 import Foundation
 
 class FactViewModel: NSObject {
-    var title:String?
-    var factList:[FactDetailResponseModel]?
+  var title: String?
+  var factList: [FactDetailResponseModel]?
 
-    init(factList:FactResponseModel) {
-        self.title = factList.title ?? ""
-        self.factList = factList.rows?.filter({ (item) -> Bool in
-            if item.description == nil && item.imageHref == nil && item.title == nil {
-                return false
-            }
-            return true
-        })
-    }
+  /// Clean up fact list from the API response. Filter out the empty fact contents from the API response
+  /// - Parameter factList: Fact API response
+  init(factList: FactResponseModel) {
+    self.title = factList.title ?? ""
+    self.factList = factList.rows?.filter({ (item) -> Bool in
+      /// if the description, title and image is empty, remove it from the the list that feeds to the UITableView
+      if item.title == nil {
+        return false
+      }
+      return true
+    })
+  }
 }

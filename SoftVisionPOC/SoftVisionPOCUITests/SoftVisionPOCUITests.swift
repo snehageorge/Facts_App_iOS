@@ -10,31 +10,31 @@ import XCTest
 
 class SoftVisionPOCUITests: XCTestCase {
 
-    override func setUpWithError() throws {
-        continueAfterFailure = false
-    }
+  override func setUpWithError() throws {
+    continueAfterFailure = false
+  }
 
-    override func tearDownWithError() throws {
-    }
+  override func tearDownWithError() throws {
+  }
 
-    func testTableViewController() {
-        let app = XCUIApplication()
-        app.launch()
+  func testTableViewController() {
+    let app = XCUIApplication()
+    app.launch()
 
-        let factsTableView = app.tables.matching(identifier: "tableView")
-        let firstCell = factsTableView.cells.element(matching: .cell, identifier: "tableView 0 0")
-        let existencePredicate = NSPredicate(format: "exists == 1")
-        let expectationEval = expectation(for: existencePredicate, evaluatedWith: firstCell, handler: nil)
-        let mobWaiter = XCTWaiter.wait(for: [expectationEval], timeout: 15.0)
-        XCTAssert(XCTWaiter.Result.completed == mobWaiter, "Test Case Failed.")
-    }
+    let factsTableView = app.tables.matching(identifier: "tableView")
+    let firstCell = factsTableView.cells.element(matching: .cell, identifier: "tableView 0 0")
+    let existencePredicate = NSPredicate(format: "exists == 1")
+    let expectationEval = expectation(for: existencePredicate, evaluatedWith: firstCell, handler: nil)
+    let mobWaiter = XCTWaiter.wait(for: [expectationEval], timeout: 15.0)
+    XCTAssert(XCTWaiter.Result.completed == mobWaiter, "Test Case Failed.")
+  }
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-                XCUIApplication().launch()
-            }
-        }
+  func testLaunchPerformance() throws {
+    if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
+      // This measures how long it takes to launch your application.
+      measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
+        XCUIApplication().launch()
+      }
     }
+  }
 }

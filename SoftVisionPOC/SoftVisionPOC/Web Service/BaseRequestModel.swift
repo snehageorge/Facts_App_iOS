@@ -8,18 +8,18 @@
 
 import UIKit
 
-enum Method:String {
-    case get = "GET"
-    case post = "POST"
+enum Method: String {
+  case get = "GET"
+  case post = "POST"
 }
 
 class BaseRequestModel: NSObject {
 
-    func requestMethod() -> String {
-        return Method.get.rawValue
-    }
+  func requestMethod() -> String {
+    return Method.get.rawValue
+  }
 
-    func requestUrl() -> URL {
-        fatalError("Override requestURL")
-    }
+  func requestUrl() -> URL {
+    fatalError("Override requestURL")
+  }
 }
