@@ -43,7 +43,7 @@ class FactsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUIComponents()
-        itemListAPICall()
+        itemListAPICall(refresh: false)
     }
 
     func setupUIComponents() {
@@ -53,16 +53,26 @@ class FactsViewController: BaseViewController {
         tableView?.addSubview(refreshControl)
     }
 
-    @objc func itemListAPICall() {
+    @objc func itemListAPICall(refresh:Bool = true) {
+        if !refresh {
+            showActivityIndicator()
+        }
         APIManager.factAPI(successBlock: { [weak self] (listViewModel) in
             guard let self = self else { return }
-            self.refreshControl.endRefreshing()
             self.itemViewModel = listViewModel
+            self.stopUINetworkActivites(refresh:refresh)
             },failureBlock:{ [weak self] (errMsg) in
                 guard let self = self else { return }
-                self.refreshControl.endRefreshing()
+                self.stopUINetworkActivites(refresh:refresh)
                 self.showAlert(mesage: errMsg)
         })
+    }
+
+    func stopUINetworkActivites(refresh:Bool) {
+        self.refreshControl.endRefreshing()
+        if !refresh {
+            hideActivityIndicator()
+        }
     }
 }
 
